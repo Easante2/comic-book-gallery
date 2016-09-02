@@ -28,20 +28,39 @@
 
         <h5>Description</h5>
         <div>@Html.Raw(description) </div>
-
-        <h5>Artists:</h5>
+        
+        @*<h5>Artists:</h5>
         <div>
             <ul>
                 @foreach (var artist in artists)
                 {
                     <li>@artist</li>
-                  //  <text> * @artist</text>
+                    /*
+                     * MEHTOD 1 : delete <ul> tags and use below:
+                   <text> * @artist</text>
+                    */
                 }
             </ul>
+        </div>*@
 
 
 
-        </div>
+        @if(artists.Length > 0 ){
+            <h5>Artists:</h5>
+            <div>
+                <ul>
+                    @foreach (var artist in artists)
+                {
+                        <li>@artist</li>
+                        /*
+                         * MEHTOD 1 : delete <ul> tags and use below:
+                       <text> * @artist</text>
+                        */
+                    }
+                </ul>
+            </div>
+        }
+       
     </div>
 </body>
 </html>
