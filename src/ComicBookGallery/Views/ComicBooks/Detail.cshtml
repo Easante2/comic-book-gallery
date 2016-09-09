@@ -1,54 +1,45 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Comic Book Detail";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-        <h1>@ViewBag.SeriesTitle</h1>
-        <h2>Issue #@ViewBag.IssueNumber</h2>
+<h1>@ViewBag.SeriesTitle</h1>
+<h2>Issue #@ViewBag.IssueNumber</h2>
 
-        <h5>Description</h5>
-        <div>@Html.Raw(ViewBag.Description) </div>
+<h5>Description</h5>
+<div>@Html.Raw(ViewBag.Description) </div>
         
-        @*<h5>Artists:</h5>
-        <div>
-            <ul>
-                @foreach (var artist in artists)
-                {
-                    <li>@artist</li>
-                    /*
-                     * MEHTOD 1 : delete <ul> tags and use below:
-                   <text> * @artist</text>
-                    */
-                }
-            </ul>
-        </div>*@
-
-
-
-        @if(ViewBag.Artists.Length > 0 ){
-            <h5>Artists:</h5>
-            <div>
-                <ul>
-                    @foreach (var artist in ViewBag.Artists)
-                {
-                        <li>@artist</li>
-                        /*
-                         * MEHTOD 1 : delete <ul> tags and use below:
-                       <text> * @artist</text>
-                        */
-                    }
-                </ul>
-            </div>
+@*<h5>Artists:</h5>
+<div>
+    <ul>
+        @foreach (var artist in artists)
+        {
+            <li>@artist</li>
+            /*
+                * MEHTOD 1 : delete <ul> tags and use below:
+            <text> * @artist</text>
+            */
         }
-       
+    </ul>
+</div>*@
+
+
+
+@if(ViewBag.Artists.Length > 0 ){
+    <h5>Artists:</h5>
+    <div>
+        <ul>
+            @foreach (var artist in ViewBag.Artists)
+        {
+                <li>@artist</li>
+                /*
+                    * MEHTOD 1 : delete <ul> tags and use below:
+                <text> * @artist</text>
+                */
+            }
+        </ul>
     </div>
-</body>
-</html>
+}
+       
+    
