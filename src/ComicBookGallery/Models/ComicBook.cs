@@ -7,7 +7,7 @@ namespace ComicBookGallery.Models
 {
     public class ComicBook
     {
-        //define and create getters and setters for fields
+        //define and create properties 
         public int Id { get; set; }
         public string SeriesTitle { get; set; }
         public int IssueNumber { get; set;}
