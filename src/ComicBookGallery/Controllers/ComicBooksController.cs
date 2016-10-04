@@ -1,4 +1,5 @@
-﻿using ComicBookGallery.Models;
+﻿using ComicBookGallery.Data;
+using ComicBookGallery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,25 @@ namespace ComicBookGallery.Controllers
 {
     public class ComicBooksController : Controller
     {
-        public ActionResult Detail()
-        {
-            var comicBook = new ComicBook()
-            {
-                SeriesTitle = "The Amazing Spider-Man",
-                IssueNumber = 700,
-                DescriptionHtml = @"<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, 
-        + last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-                Artists = new Artist[]
-                {
-                        new Artist { Name="Dan Slott", Role = "Script" },
-                        new Artist { Name="Humberto Ramos", Role = "Pencils" },
-                        new Artist { Name="Victor Olazaba", Role = "Inks" },
-                        new Artist { Name="Edgar Delgado", Role = "Colors" },
-                        new Artist { Name="Chris Eliopoulos", Role = "Letters" },
+        private ComicBookRepository _comicBookRepository = null;
 
-                }
-            };
+        public ComicBooksController()
+        {
+            _comicBookRepository = new ComicBookRepository();
+        }
+
+        //? enables to pass nullable types
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            //need to cast because cannot pass nullable type int to method in repo 
+            //where it passes an int only
+            var comicBook = _comicBookRepository.GetComicBook((int)id);
+
             //Alternative method: Pass data from controller to view using 'ViewBag'
             //    ViewBag.SeriesTitle = "The Amazing Spider-Man";
             //    ViewBag.IssueNumber = 700;
@@ -41,6 +43,7 @@ namespace ComicBookGallery.Controllers
             //        "Letters: Chris Eliopoulos"
             //            };
 
+            //return View(comicBook);
             //the in the parameter makes it a strongly typed view
             //exposes the model instance through its model property 
             return View(comicBook);
