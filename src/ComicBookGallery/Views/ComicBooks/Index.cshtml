@@ -11,10 +11,18 @@
     @foreach (var comicBook in Model)
     {
         <div class= "col-md-3">
-             <h4>@comicBook.DisplayText </h4>
-             <img src="/Images/@comicBook.CoverImageFileName"
-                  alt ="@comicBook.DisplayText"
-                  class="img-responsive"/>
+            @*Action link to enable the comic book name to be hyperlinks*@
+            @*new {id = comicBook.Id } = anonymous types - no need to define class 
+                when instantiating an object*@ 
+             <h4>@Html.ActionLink(@comicBook.DisplayText, "Detail",
+                new {id = comicBook.Id }) </h4>
+
+            @*Make a hyperlink image*@
+            <a href="@Url.Action("Detail", new {id = comicBook.Id })">
+                <img src="/Images/@comicBook.CoverImageFileName"
+                     alt="@comicBook.DisplayText"
+                     class="img-responsive" />
+            </a>
         </div>
     }
 
