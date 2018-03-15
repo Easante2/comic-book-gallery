@@ -15,6 +15,7 @@ namespace ComicBookGallery.Models
         public Artist[] Artists { get; set; }
         public bool Favourite { get; set; }
 
+        //display the seriestitle and issue number
         public string DisplayText
         {
             get
@@ -23,6 +24,7 @@ namespace ComicBookGallery.Models
             }
         }
 
+        //display comic book image
         public string CoverImageFileName
         {
             get

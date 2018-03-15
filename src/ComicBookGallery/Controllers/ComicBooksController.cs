@@ -27,6 +27,7 @@ namespace ComicBookGallery.Controllers
         }
 
         //? enables to pass nullable types
+        //pass in nullable type to check if the comicbook id exists
         public ActionResult Detail(int? id)
         {
             if (id == null)
